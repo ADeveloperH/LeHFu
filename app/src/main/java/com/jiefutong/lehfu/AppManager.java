@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 
@@ -60,14 +61,29 @@ public class AppManager {
     }
 
     /**
-     * 结束指定的Activity
+     * 结束指定的Activity并移除栈
      */
     public void finishActivity(Activity activity) {
         if (activity != null) {
             if (activityStack.contains(activity)) {
                 activityStack.remove(activity);
-                activity.finish();
+                if (!activity.isFinishing()) {
+                    activity.finish();
+                }
                 activity = null;
+            }
+        }
+    }
+
+    /**
+     * 将activity移除栈
+     *
+     * @param activity
+     */
+    public void removeActivity(Activity activity) {
+        if (activity != null) {
+            if (activityStack.contains(activity)) {
+                activityStack.remove(activity);
             }
         }
     }
@@ -76,9 +92,14 @@ public class AppManager {
      * 结束指定类名的Activity
      */
     public void finishActivity(Class<?> cls) {
-        for (Activity activity : activityStack) {
-            if (activity.getClass().equals(cls)) {
-                finishActivity(activity);
+        Iterator<Activity> iterator = activityStack.iterator();
+        while (iterator.hasNext()) {
+            Activity activity = iterator.next();
+            if (activity != null && activity.getClass().equals(cls)) {
+                iterator.remove();
+                if (!activity.isFinishing()) {
+                    activity.finish();
+                }
             }
         }
     }
@@ -87,12 +108,35 @@ public class AppManager {
      * 结束所有Activity
      */
     public void finishAllActivity() {
-        for (int i = 0, size = activityStack.size(); i < size; i++) {
-            if (null != activityStack.get(i)) {
-                activityStack.get(i).finish();
+        if (activityStack != null && activityStack.size() > 0) {
+            for (int i = 0, size = activityStack.size(); i < size; i++) {
+                if (null != activityStack.get(i)) {
+                    Activity activity = activityStack.get(i);
+                    if (!activity.isFinishing()) {
+                        activity.finish();
+                    }
+                }
             }
+            activityStack.clear();
         }
-        activityStack.clear();
+
+    }
+
+    /**
+     * 结束其他Activity
+     */
+    public void finishAllOtherActivity() {
+        if (activityStack != null && activityStack.size() > 0) {
+            Activity curActivity = activityStack.lastElement();
+            for (int i = 0, size = activityStack.size(); i < size; i++) {
+                Activity activity = activityStack.get(i);
+                if (null != activity && activity != curActivity && !activity.isFinishing()) {
+                    activityStack.get(i).finish();
+                }
+            }
+            activityStack.clear();
+            activityStack.add(curActivity);
+        }
     }
 
     /**

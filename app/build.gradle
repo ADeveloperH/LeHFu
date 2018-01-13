@@ -10,13 +10,31 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        myconfig {
+            keyAlias 'lehfu'
+            keyPassword 'lehuan555fu'
+            storeFile file('D:/AndroidStudioWorkspace/LeHuanFu/lehfu.jks')
+            storePassword 'lehuan555fu'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.myconfig
         }
+        debug {//调试
+            signingConfig signingConfigs.myconfig
+        }
+    }
+
+}
+repositories {
+    flatDir {
+        dirs 'libs'   // aar目录
     }
 }
 
@@ -28,5 +46,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    compile(name: 'imageloader-release', ext: 'aar')
 }

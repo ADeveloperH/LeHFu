@@ -18,7 +18,7 @@ public class SplashActivity extends BaseNotTitleActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_layout);
 
-        startActivity(new Intent(this,IdentifyActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

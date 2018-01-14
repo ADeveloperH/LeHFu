@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="21dp"
+            android:paddingTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="手机号"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="13112345678"
+                android:textColor="#333333"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="验证码"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入右侧验证码"
+                android:inputType="phone"
+                android:maxLength="13"
+                android:singleLine="true"
+                android:textColorHint="#A8A8A8"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:layout_width="89dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="11dp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="短信码"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入收到的短信码"
+                android:inputType="phone"
+                android:maxLength="13"
+                android:singleLine="true"
+                android:textColorHint="#A8A8A8"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#A6A6A6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="25dp"
+                android:text="点击获取"
+                android:textColor="#6E6E6E"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#DFDFDF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="21dp"
+            android:paddingTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="新密码"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入新密码"
+                android:inputType="phone"
+                android:maxLength="13"
+                android:singleLine="true"
+                android:textColorHint="#A8A8A8"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DFDFDF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="21dp"
+            android:paddingTop="21dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="35dp"
+                android:text="新密码"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请再次输入新密码"
+                android:inputType="phone"
+                android:maxLength="13"
+                android:singleLine="true"
+                android:textColorHint="#A8A8A8"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/bg_blue_btn"
+        android:text="确 定"
+        android:textColor="#fff"
+        android:textSize="18dp" />
+
+</LinearLayout>

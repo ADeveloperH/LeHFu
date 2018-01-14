@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
+import com.jiefutong.lehfu.activity.UserInfoActivity;
 import com.jiefutong.lehfu.base.BaseFragment;
 import com.jiefutong.lehfu.widget.CircleImageView;
 
@@ -84,6 +85,7 @@ public class CustomerFragment extends BaseFragment {
             case R.id.iv_user_icon:
                 break;
             case R.id.ll_customer_info:
+                startActivity(new Intent(mActivity, UserInfoActivity.class));
                 break;
             case R.id.ll_yu_e:
                 break;

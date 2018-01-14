@@ -212,6 +212,7 @@
             android:background="#D8D8D8" />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="173dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
@@ -38,6 +37,7 @@ public class BaseTitleActivity extends BaseAppCompatActivity {
         setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         initToolbar();
 
+        setTitleBackVisible(View.VISIBLE);
         act = this;
     }
 
@@ -159,12 +159,6 @@ public class BaseTitleActivity extends BaseAppCompatActivity {
                 inputManager.showSoftInput(focusView, 0);
             }
         }, 200);
-    }
-
-    public void setTitleVisiable(int vi) {
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.titlebar_layout);
-        layout.setVisibility(vi);
-        getSupportActionBar().setBackgroundDrawable(null);
     }
 
     @Override

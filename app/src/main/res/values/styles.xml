@@ -8,8 +8,10 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="Theme.AppStartLoad" parent="@android:style/Theme.NoTitleBar.Fullscreen">
-        <!--<item name="android:windowBackground">@drawable/splash_bg</item>-->
+    <style name="Theme.AppStartLoad" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowBackground">@drawable/bg_star</item>-->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 

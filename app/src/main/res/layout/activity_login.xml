@@ -57,7 +57,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/regitster_phone" />
+                android:src="@drawable/register_phone" />
 
             <EditText
                 android:layout_width="0dp"
@@ -88,7 +88,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/regitster_sms" />
+                android:src="@drawable/register_sms" />
 
             <EditText
                 android:layout_width="0dp"
@@ -123,7 +123,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/regitster_identifycode" />
+                android:src="@drawable/register_identifycode" />
 
             <EditText
                 android:layout_width="0dp"

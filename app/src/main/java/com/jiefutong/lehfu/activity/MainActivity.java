@@ -52,16 +52,16 @@ public class MainActivity extends BaseNotTitleActivity {
         mFragmentList.add(new HomeFragment());
 
         tabNameList.add("还款计划");
-        tabImageList.add(R.drawable.selector_main_tab_home);
+        tabImageList.add(R.drawable.selector_main_tab_repayplan);
         mFragmentList.add(new RepayPlanFragment());
 
         //使用原生视频直播
         tabNameList.add("我的账单");
-        tabImageList.add(R.drawable.selector_main_tab_home);
+        tabImageList.add(R.drawable.selector_main_tab_bill);
         mFragmentList.add(new BillFragment());
 
         tabNameList.add("我的");
-        tabImageList.add(R.drawable.selector_main_tab_home);
+        tabImageList.add(R.drawable.selector_main_tab_customer);
         mFragmentList.add(new CustomerFragment());
 
         mainTabHost.initTabs(tabNameList, tabImageList);

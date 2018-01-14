@@ -1,6 +1,7 @@
 package com.jiefutong.lehfu.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.WindowManager;
 
@@ -11,6 +12,7 @@ import com.jiefutong.lehfu.fragment.BillFragment;
 import com.jiefutong.lehfu.fragment.CustomerFragment;
 import com.jiefutong.lehfu.fragment.HomeFragment;
 import com.jiefutong.lehfu.fragment.RepayPlanFragment;
+import com.jiefutong.lehfu.utils.ToastUtils;
 import com.jiefutong.lehfu.widget.MainTabHost;
 import com.jiefutong.lehfu.widget.NoScrollViewPager;
 
@@ -83,5 +85,29 @@ public class MainActivity extends BaseNotTitleActivity {
             }
         });
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        exit();
+    }
+
+    private boolean exiting = false;
+
+    // 按两次返回键退出程序
+    private void exit() {
+        if (exiting) {
+            moveTaskToBack(true);
+        } else {
+            ToastUtils.showLongToast("再按一次返回键退出");
+            exiting = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exiting = false;
+                }
+            }, 2000);
+        }
     }
 }

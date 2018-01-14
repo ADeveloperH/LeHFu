@@ -105,6 +105,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_yu_e"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,6 +131,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_shou_yi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -202,6 +204,7 @@
                 android:background="#E9E9E9" />
 
             <TextView
+                android:id="@+id/tv_ti_xian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_customer__green_outerframe"
@@ -223,6 +226,7 @@
             android:paddingTop="30dp">
 
             <TextView
+                android:id="@+id/tv_ka_bao"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -234,6 +238,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_shou_yi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -245,6 +250,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_my_team"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -265,6 +271,7 @@
             android:paddingTop="35dp">
 
             <TextView
+                android:id="@+id/tv_account_set"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -276,6 +283,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_want_tui_guang"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -287,6 +295,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_ming_xi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -309,6 +318,7 @@
             android:paddingTop="35dp">
 
             <TextView
+                android:id="@+id/tv_about"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -320,6 +330,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_feed_back"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -336,7 +347,6 @@
                 android:layout_weight="1" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 

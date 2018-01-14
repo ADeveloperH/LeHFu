@@ -2,9 +2,13 @@ package com.jiefutong.lehfu.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.base.BaseNotTitleActivity;
+import com.jiefutong.lehfu.utils.AppUtil;
+import com.jiefutong.lehfu.utils.DateUtil;
+import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
 
 /**
  * author：hj
@@ -18,7 +22,18 @@ public class SplashActivity extends BaseNotTitleActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_layout);
 
+        updateData();
+
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    private void updateData() {
+        String appVersionName = AppUtil.getAppVersionName(this);
+        String updateTime = SharedPreferencesUtil.getUpdateTime(appVersionName);
+        if (TextUtils.isEmpty(updateTime)) {
+            SharedPreferencesUtil.setUpdateTime(appVersionName,
+                    DateUtil.getCurrentDateTime(DateUtil.formatStr_yyyyMMdd));
+        }
     }
 }

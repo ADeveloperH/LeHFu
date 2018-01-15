@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
+import com.jiefutong.lehfu.activity.IncomeDetailActivity;
 import com.jiefutong.lehfu.activity.UserInfoActivity;
 import com.jiefutong.lehfu.base.BaseFragment;
 import com.jiefutong.lehfu.widget.CircleImageView;
@@ -90,6 +91,7 @@ public class CustomerFragment extends BaseFragment {
             case R.id.ll_yu_e:
                 break;
             case R.id.ll_shou_yi:
+                startActivity(new Intent(mActivity, IncomeDetailActivity.class));
                 break;
             case R.id.tv_ti_xian:
                 break;

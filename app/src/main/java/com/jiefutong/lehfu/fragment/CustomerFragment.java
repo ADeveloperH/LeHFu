@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
+import com.jiefutong.lehfu.activity.AccountSetActivity;
 import com.jiefutong.lehfu.activity.FeedBackActivity;
 import com.jiefutong.lehfu.activity.SpreadIncomeActivity;
 import com.jiefutong.lehfu.activity.TiXianDetailActivity;
@@ -104,6 +105,7 @@ public class CustomerFragment extends BaseFragment {
             case R.id.tv_my_team:
                 break;
             case R.id.tv_account_set:
+                startActivity(new Intent(mActivity, AccountSetActivity.class));
                 break;
             case R.id.tv_want_tui_guang:
                 break;

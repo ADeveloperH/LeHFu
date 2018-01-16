@@ -1,6 +1,5 @@
 package com.jiefutong.lehfu.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
@@ -26,7 +26,6 @@ import java.util.TimerTask;
  */
 public class BaseTitleActivity extends BaseAppCompatActivity {
     private LinearLayout rootLayout;
-    private Activity act;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class BaseTitleActivity extends BaseAppCompatActivity {
         initToolbar();
 
         setTitleBackVisible(View.VISIBLE);
-        act = this;
     }
 
     private void initToolbar() {
@@ -60,12 +58,21 @@ public class BaseTitleActivity extends BaseAppCompatActivity {
         if (toolbar != null) {
             toolbar.setBackgroundColor(color);
         }
+
+        RelativeLayout rlTitle = (RelativeLayout) findViewById(R.id.titlebar_layout);
+        if (rlTitle != null) {
+            rlTitle.setBackgroundColor(color);
+        }
     }
 
     protected void setToolbarBg(Drawable drawable) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             toolbar.setBackground(drawable);
+        }
+        RelativeLayout rlTitle = (RelativeLayout) findViewById(R.id.titlebar_layout);
+        if (rlTitle != null) {
+            rlTitle.setBackground(drawable);
         }
     }
 

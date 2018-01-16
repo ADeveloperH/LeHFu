@@ -19,6 +19,8 @@ public class RegisterActivity extends BaseTitleActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regitster);
+        setStatusBarColor(getResources().getColor(R.color.login_statusbar));
+        setToolbarBg(getResources().getColor(R.color.login_statusbar));
         setTitle("注册");
     }
 }

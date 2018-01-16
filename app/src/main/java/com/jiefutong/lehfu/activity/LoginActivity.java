@@ -17,6 +17,7 @@ public class LoginActivity extends BaseNotTitleActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBarColor(getResources().getColor(R.color.login_statusbar));
         setContentView(R.layout.activity_login);
     }
 }

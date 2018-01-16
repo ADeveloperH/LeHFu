@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="17dp"
+        android:text="问题和意见"
+        android:textColor="#50566A"
+        android:textSize="15dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:background="#fff"
+        android:gravity="top"
+        android:hint="请输入您的遇到的问题，以便于我们为您提供更好的帮助"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textColorHint="#9E9E9E"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="17dp"
+        android:text="图片上传（选填，提供问题截图）"
+        android:textColor="#50566A"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="14dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="83dp"
+            android:layout_height="83dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/feedback_addphoto" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="17dp"
+        android:text="联系电话"
+        android:textColor="#50566A"
+        android:textSize="15dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="top"
+        android:hint="选填，便于与您联系"
+        android:paddingBottom="15dp"
+        android:paddingLeft="14dp"
+        android:paddingTop="15dp"
+        android:textColorHint="#9E9E9E"
+        android:textSize="16dp" />
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/bg_blue_btn"
+        android:text="提 交"
+        android:textColor="#fff"
+        android:textSize="18dp" />
+</LinearLayout>

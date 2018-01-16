@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
-import com.jiefutong.lehfu.activity.IncomeDetailActivity;
+import com.jiefutong.lehfu.activity.FeedBackActivity;
 import com.jiefutong.lehfu.activity.SpreadIncomeActivity;
 import com.jiefutong.lehfu.activity.TiXianDetailActivity;
 import com.jiefutong.lehfu.activity.UserInfoActivity;
@@ -114,6 +114,7 @@ public class CustomerFragment extends BaseFragment {
                 startActivity(new Intent(mActivity, AboutActivity.class));
                 break;
             case R.id.tv_feed_back:
+                startActivity(new Intent(mActivity, FeedBackActivity.class));
                 break;
         }
     }

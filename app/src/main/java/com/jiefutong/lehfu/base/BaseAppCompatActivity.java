@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
  * author：hj
  */
 public abstract class BaseAppCompatActivity extends AppCompatActivity{
-    private Activity act;
+    protected Activity act;
     private ProgressDialog loading;//正在加载的进度条
     protected boolean isFullScreen = false;//是否是全屏。默认不是全屏
 

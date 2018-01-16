@@ -1,5 +1,6 @@
 package com.jiefutong.lehfu.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.widget.Button;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.base.BaseNotTitleActivity;
+import com.jiefutong.lehfu.utils.DialogUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +52,23 @@ public class SpreadIncomeActivity extends BaseNotTitleActivity {
                 startActivity(new Intent(act, IncomeDetailActivity.class));
                 break;
             case R.id.btn_ti_xian:
+                shoNoCardDialog();
                 break;
         }
+    }
+
+    /**
+     * 显示无银行卡提示的对话框
+     */
+    private void shoNoCardDialog() {
+        Dialog simpleDialog = DialogUtil.getSimpleDialog(act, "添加银行卡", "请先添加一张银行卡",
+                "去添加", "取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(act, AddBankCardActivity.class));
+                    }
+                }, null, true);
+
+        simpleDialog.show();
     }
 }

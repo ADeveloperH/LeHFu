@@ -108,8 +108,14 @@
             android:name=".activity.TiXianDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.SpreadIncomeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AddBankCardActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>

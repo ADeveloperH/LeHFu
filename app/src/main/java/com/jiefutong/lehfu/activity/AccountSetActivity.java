@@ -38,7 +38,7 @@ public class AccountSetActivity extends BaseTitleActivity {
                 startActivity(new Intent(act, TransactionPwdActivity.class));
                 break;
             case R.id.tv_modify_phone:
-                startActivity(new Intent(act, TransactionPwdActivity.class));
+                startActivity(new Intent(act, ModifyPhoneActivity.class));
                 break;
         }
     }

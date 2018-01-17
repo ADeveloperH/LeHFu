@@ -138,6 +138,11 @@
             android:name=".activity.ModifyPhoneActivity2"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.MyTeamActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

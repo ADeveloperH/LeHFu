@@ -13,6 +13,7 @@ import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
 import com.jiefutong.lehfu.activity.AccountSetActivity;
 import com.jiefutong.lehfu.activity.FeedBackActivity;
+import com.jiefutong.lehfu.activity.MyTeamActivity;
 import com.jiefutong.lehfu.activity.SpreadIncomeActivity;
 import com.jiefutong.lehfu.activity.TiXianDetailActivity;
 import com.jiefutong.lehfu.activity.UserInfoActivity;
@@ -103,6 +104,7 @@ public class CustomerFragment extends BaseFragment {
                 startActivity(new Intent(mActivity, SpreadIncomeActivity.class));
                 break;
             case R.id.tv_my_team:
+                startActivity(new Intent(mActivity, MyTeamActivity.class));
                 break;
             case R.id.tv_account_set:
                 startActivity(new Intent(mActivity, AccountSetActivity.class));

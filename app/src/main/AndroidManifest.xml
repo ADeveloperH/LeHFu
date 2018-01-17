@@ -148,6 +148,11 @@
             android:name=".activity.TiXianByBalanceActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.SelectBankCardActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -28,9 +28,16 @@ public class TiXianByBalanceActivity extends BaseTitleActivity {
         setTitle("余额提现");
     }
 
-    @OnClick(R.id.btn_ti_xian)
-    public void onClick() {
-        showRemindDialog();
+    @OnClick({R.id.rl_selectbank, R.id.btn_ti_xian})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rl_selectbank:
+                startActivity(new Intent(act, SelectBankCardActivity.class));
+                break;
+            case R.id.btn_ti_xian:
+                showRemindDialog();
+                break;
+        }
     }
 
     private void showRemindDialog() {

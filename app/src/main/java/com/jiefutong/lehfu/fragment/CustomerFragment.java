@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.activity.AboutActivity;
 import com.jiefutong.lehfu.activity.AccountSetActivity;
+import com.jiefutong.lehfu.activity.CreditCardConsumeActivity;
 import com.jiefutong.lehfu.activity.FeedBackActivity;
 import com.jiefutong.lehfu.activity.MyTeamActivity;
 import com.jiefutong.lehfu.activity.SpreadIncomeActivity;
@@ -86,7 +87,8 @@ public class CustomerFragment extends BaseFragment {
 
     @OnClick({R.id.iv_user_icon, R.id.ll_customer_info, R.id.ll_yu_e, R.id.ll_shou_yi,
             R.id.tv_ti_xian, R.id.tv_ka_bao, R.id.tv_shou_yi, R.id.tv_my_team, R.id.tv_account_set,
-            R.id.tv_want_tui_guang, R.id.tv_ming_xi, R.id.tv_about, R.id.tv_feed_back})
+            R.id.tv_want_tui_guang, R.id.tv_ming_xi, R.id.tv_about, R.id.tv_feed_back,
+            R.id.tv_credit_card})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_user_icon:
@@ -99,7 +101,7 @@ public class CustomerFragment extends BaseFragment {
             case R.id.ll_shou_yi:
                 break;
             case R.id.tv_ti_xian:
-                startActivity(new Intent(mActivity, TiXianByBalanceActivity  .class));
+                startActivity(new Intent(mActivity, TiXianByBalanceActivity.class));
                 break;
             case R.id.tv_ka_bao:
                 break;
@@ -123,6 +125,9 @@ public class CustomerFragment extends BaseFragment {
                 break;
             case R.id.tv_feed_back:
                 startActivity(new Intent(mActivity, FeedBackActivity.class));
+                break;
+            case R.id.tv_credit_card:
+                startActivity(new Intent(mActivity, CreditCardConsumeActivity.class));
                 break;
         }
     }

@@ -26,4 +26,9 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="TabLayout.TabText" parent="TextAppearance.Design.Tab">
+        <!--<item name="textAllCaps">false</item>-->
+        <item name="android:textSize">15dp</item>
+    </style>
 </resources>

@@ -14,6 +14,7 @@ import com.jiefutong.lehfu.activity.AboutActivity;
 import com.jiefutong.lehfu.activity.AccountSetActivity;
 import com.jiefutong.lehfu.activity.CreditCardConsumeActivity;
 import com.jiefutong.lehfu.activity.FeedBackActivity;
+import com.jiefutong.lehfu.activity.MyCardPackageActivity;
 import com.jiefutong.lehfu.activity.MyTeamActivity;
 import com.jiefutong.lehfu.activity.SpreadIncomeActivity;
 import com.jiefutong.lehfu.activity.TiXianByBalanceActivity;
@@ -104,6 +105,7 @@ public class CustomerFragment extends BaseFragment {
                 startActivity(new Intent(mActivity, TiXianByBalanceActivity.class));
                 break;
             case R.id.tv_ka_bao:
+                startActivity(new Intent(mActivity, MyCardPackageActivity.class));
                 break;
             case R.id.tv_shou_yi:
                 startActivity(new Intent(mActivity, SpreadIncomeActivity.class));

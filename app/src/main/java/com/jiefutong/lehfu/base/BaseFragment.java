@@ -1,6 +1,7 @@
 package com.jiefutong.lehfu.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import butterknife.Unbinder;
@@ -26,5 +27,10 @@ public class BaseFragment extends Fragment {
         if (unbinder != null) {
             unbinder.unbind();
         }
+    }
+
+
+    protected void jumpActivity(Class clazz) {
+        startActivity(new Intent(mActivity,clazz));
     }
 }

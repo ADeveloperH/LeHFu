@@ -21,4 +21,48 @@
             android:textSize="18dp" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/ll_noplan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/repayplan_unrecorded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="您还未添加还款计划哦~"
+            android:textColor="#333333"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/iv_add_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:src="@drawable/repayplay_plus" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="历史账单~"
+            android:textColor="#333333"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -41,10 +41,13 @@ public class Http {
     public static final String GET_SMS_CODE = "index.php/User/Index/check_phone1.html";
 
     //获取短信验证码
-    public static final String GET_OTHER_SMS_CODE = "index.php/User/Index/check_phone.htm";
+    public static final String GET_OTHER_SMS_CODE = "index.php/User/Index/check_phone.html";
 
     //注册接口
     public static final String REGISTER = "index.php/User/Index/register";
+
+    //找回密码接口
+    public static final String FIND_PWD = "index.php/User/Index/forget.html";
 
 
     static {

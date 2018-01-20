@@ -75,7 +75,7 @@ public class LoginActivity extends BaseNotTitleActivity {
                 .into(ivCode);
     }
 
-    @OnClick({R.id.tv_dynamiclogin, R.id.tv_forgetpwd, R.id.btn_login, R.id.iv_code})
+    @OnClick({R.id.tv_dynamiclogin, R.id.tv_forgetpwd, R.id.btn_login, R.id.iv_code, R.id.tv_register})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_dynamiclogin:
@@ -83,6 +83,9 @@ public class LoginActivity extends BaseNotTitleActivity {
                 break;
             case R.id.tv_forgetpwd:
                 startActivity(new Intent(act, FindPwdActivity.class));
+                break;
+            case R.id.tv_register:
+                startActivity(new Intent(act, RegisterActivity.class));
                 break;
             case R.id.btn_login:
                 login();

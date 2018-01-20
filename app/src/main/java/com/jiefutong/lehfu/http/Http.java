@@ -33,8 +33,15 @@ public class Http {
     //密码登录
     public static final String LOGIN_PWD = "index.php/User/Index/passlogin";
 
+    //短信验证码登录
+    public static final String LOGIN_SMS = "index.php/User/Index/login";
 
+
+    //获取短信验证码
     public static final String GET_SMS_CODE = "index.php/User/Index/check_phone1.html";
+
+    //获取短信验证码
+    public static final String GET_OTHER_SMS_CODE = "index.php/User/Index/check_phone.htm";
 
     //注册接口
     public static final String REGISTER = "index.php/User/Index/register";

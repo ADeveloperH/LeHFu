@@ -22,6 +22,7 @@ import com.jiefutong.lehfu.http.MyTextAsyncResponseHandler;
 import com.jiefutong.lehfu.http.RequestParams;
 import com.jiefutong.lehfu.utils.DataCheckUtils;
 import com.jiefutong.lehfu.utils.JsonUtil;
+import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
 import com.jiefutong.lehfu.utils.ToastUtils;
 
 import java.util.Timer;
@@ -144,7 +145,7 @@ public class RegisterActivity extends BaseTitleActivity {
             ToastUtils.showCenterLongToast("两次输入的密码不一致");
             return;
         }
-        RequestParams requestParams = new RequestParams();
+        final RequestParams requestParams = new RequestParams();
         requestParams.put("tel", inputPhone);
         requestParams.put("uuid", uuid);
         requestParams.put("verify", inputCode);
@@ -159,6 +160,7 @@ public class RegisterActivity extends BaseTitleActivity {
                         super.onSuccess(content);
                         SimpleResultBean resultBean = JsonUtil.fromJson(content, SimpleResultBean.class);
                         if (resultBean.getStatus() == 1) {
+                            SharedPreferencesUtil.setAppToken(resultBean.getApp_token());
                             startActivity(new Intent(act, LoginActivity.class));
                             finish();
                         }

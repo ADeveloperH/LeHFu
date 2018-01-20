@@ -16,6 +16,7 @@ public class SimpleResultBean {
 
     private int status;
     private String info;
+    private String app_token = "-1";
 
     public int getStatus() {
         return status;
@@ -31,5 +32,13 @@ public class SimpleResultBean {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public String getApp_token() {
+        return app_token;
+    }
+
+    public void setApp_token(String app_token) {
+        this.app_token = app_token;
     }
 }

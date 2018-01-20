@@ -13,6 +13,8 @@ public class SharedPreferencesUtil {
 
     public static final String KEY_UPDATE_TIME = "KEY_UPDATE_TIME";
 
+    public static final String KEY_APPTOKEN = "key_apptoken";
+
 
     private static Context mcontext;
 
@@ -36,7 +38,23 @@ public class SharedPreferencesUtil {
         }
         return null;
     }
+//===========================================getPreferencesPrivate	START====================================//
 
+    public static boolean setAppToken(String appToken) {
+        if (getPreferencesPrivate() != null) {
+            return getPreferencesPrivate().edit().putString(KEY_APPTOKEN, appToken).commit();
+        }
+        return false;
+    }
+
+    public static String getAppToken() {
+        if (getPreferencesPrivate() != null) {
+            return getPreferencesPrivate().getString(KEY_APPTOKEN, "-1");
+        }
+        return "-1";
+    }
+
+//===========================================getPreferencesPrivate	END====================================//
 
 //===========================================getPreferencesHistory	START====================================//
 

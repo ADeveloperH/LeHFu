@@ -1,5 +1,7 @@
 package com.jiefutong.lehfu.http.factory;
 
+import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -15,7 +17,7 @@ public class MyInterceptor implements Interceptor {
         Request original = chain.request();
         //添加请求头信息
         Request.Builder headerBuilder = original.newBuilder();
-        headerBuilder.addHeader("APPTOKEN", "-1");
+        headerBuilder.addHeader("APPTOKEN", SharedPreferencesUtil.getAppToken());
         return chain.proceed(headerBuilder.build());
     }
 }

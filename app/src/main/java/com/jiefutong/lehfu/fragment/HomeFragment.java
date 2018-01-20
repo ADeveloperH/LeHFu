@@ -11,13 +11,22 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.google.gson.reflect.TypeToken;
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.adapter.HomeGridAdapter;
 import com.jiefutong.lehfu.adapter.HomeTitleAdapter;
 import com.jiefutong.lehfu.adapter.HomeTopAdapter;
+import com.jiefutong.lehfu.adapter.HomeTouTiaoAdapter;
 import com.jiefutong.lehfu.base.BaseFragment;
+import com.jiefutong.lehfu.bean.HomeTouTiaoResultBean;
+import com.jiefutong.lehfu.http.Http;
+import com.jiefutong.lehfu.http.MyTextAsyncResponseHandler;
+import com.jiefutong.lehfu.http.RequestParams;
+import com.jiefutong.lehfu.utils.JsonUtil;
+import com.jiefutong.lehfu.utils.ToastUtils;
 import com.jiefutong.lehfu.utils.UIUtils;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,6 +45,10 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     private View rootView;
+    private List<HomeTouTiaoResultBean> touTiaoList = new ArrayList<>();
+    private int curPage;
+    private int pageCount = 10;
+    private HomeTouTiaoAdapter touTiaoAdapter;
 
     @Nullable
     @Override
@@ -58,13 +71,69 @@ public class HomeFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         initRecyclerView();
+
+        getTouTiaoData();
+    }
+
+
+    /**
+     * 获取金融头条数据
+     */
+    private void getTouTiaoData() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("page", curPage + "");
+        requestParams.put("size", pageCount + "");
+        Http.post(Http.GET_TOUTIAO, requestParams,
+                new MyTextAsyncResponseHandler(mActivity, "获取中...") {
+                    @Override
+                    public void onSuccess(String content) {
+                        super.onSuccess(content);
+                        content = "[\n" +
+                                "  {\n" +
+                                "    \"id\": \"28\", \n" +
+                                "    \"title\": \"如何才能真正的提高自己，成为一名出色的架构师？\", \n" +
+                                "    \"create_time\": \"2018-01-20 11:43:23\", \n" +
+                                "    \"cishu\": \"222\", \n" +
+                                "    \"pic\": \"/Uploads/2018-01-20/1516419810.png\", \n" +
+                                "    \"url\": \"\"\n" +
+                                "  }, \n" +
+                                "  {\n" +
+                                "    \"id\": \"27\", \n" +
+                                "    \"title\": \"范德萨范德萨\", \n" +
+                                "    \"create_time\": \"2018-01-20 11:42:50\", \n" +
+                                "    \"cishu\": \"22\", \n" +
+                                "    \"pic\": \"/Uploads/2018-01-20/1516419783.png\", \n" +
+                                "    \"url\": \"http://www.baidu.com\"\n" +
+                                "  }\n" +
+                                "]";
+                        try {
+                            List<HomeTouTiaoResultBean> resultList = JsonUtil.fromJson(content,
+                                    new TypeToken<List<HomeTouTiaoResultBean>>() {
+                                    }.getType());
+                            if (resultList != null && resultList.size() > 0) {
+                                touTiaoList.addAll(resultList);
+                                touTiaoAdapter.setDataList(touTiaoList);
+                                touTiaoAdapter.notifyDataSetChanged();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable error) {
+                        super.onFailure(error);
+                        ToastUtils.showCenterLongToast("获取数据失败");
+                    }
+                });
+
     }
 
     private void initRecyclerView() {
         List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
         recyclerview.setLayoutManager(layoutManager);
-        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, true);
+        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
         recyclerview.setAdapter(delegateAdapter);
 
         adapters.add(new HomeTopAdapter(mActivity, new LinearLayoutHelper(), 1));
@@ -83,8 +152,17 @@ public class HomeFragment extends BaseFragment {
         titleLayoutHelper2.setMargin(0, UIUtils.dip2px(12), 0, UIUtils.dip2px(1));
         adapters.add(new HomeTitleAdapter(mActivity, "金融头条", titleLayoutHelper2, 1));
 
+
+        LinearLayoutHelper touTiaoLayoutHelper = new LinearLayoutHelper();
+        touTiaoAdapter = new HomeTouTiaoAdapter(mActivity, touTiaoList, touTiaoLayoutHelper);
+        adapters.add(touTiaoAdapter);
         delegateAdapter.setAdapters(adapters);
 
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getTouTiaoData();
     }
 }

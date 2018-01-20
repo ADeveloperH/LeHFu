@@ -24,7 +24,7 @@ public class SplashActivity extends BaseNotTitleActivity {
 
         updateData();
 
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, RegisterActivity.class));
         finish();
     }
 

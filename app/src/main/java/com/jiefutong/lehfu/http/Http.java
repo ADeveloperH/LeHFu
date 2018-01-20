@@ -4,6 +4,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.jiefutong.lehfu.http.factory.ApiRequestFactory;
+import com.jiefutong.lehfu.utils.NetWorkUtil;
+import com.jiefutong.lehfu.utils.ToastUtils;
 
 import java.io.File;
 
@@ -25,8 +27,17 @@ public class Http {
     public static final String BASE_URL;
 
 
+    //获取图片验证码
+    public static final String GET_CODE = "index.php/User/Index/getVerify.html";
+
     //密码登录
     public static final String LOGIN_PWD = "index.php/User/Index/passlogin";
+
+
+    public static final String GET_SMS_CODE = "index.php/User/Index/check_phone1.html";
+
+    //注册接口
+    public static final String REGISTER = "index.php/User/Index/register";
 
 
     static {
@@ -117,6 +128,11 @@ public class Http {
      * @param responseHandler
      */
     public static void post(final String url, final RequestParams params, final Callback<ResponseBody> responseHandler) {
+        if (!NetWorkUtil.hasAvailableNetWork()) {
+            ToastUtils.showCenterLongToast("当前无网络，请检查网络设置或稍后再试");
+            return;
+        }
+
         if (TextUtils.isEmpty(url)) {
             Log.e("Http", "请求地址不能为空");
         } else {

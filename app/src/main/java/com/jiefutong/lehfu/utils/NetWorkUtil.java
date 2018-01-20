@@ -115,8 +115,8 @@ public class NetWorkUtil {
     }
 
     //是否有可用网络
-    public static boolean hasAvailableNetWork(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    public static boolean hasAvailableNetWork() {
+        ConnectivityManager cm = (ConnectivityManager) UIUtils.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         if (info == null || !info.isAvailable()) {
             return false;

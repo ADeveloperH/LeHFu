@@ -154,8 +154,11 @@ public class HomeFragment extends BaseFragment {
 
 
         LinearLayoutHelper touTiaoLayoutHelper = new LinearLayoutHelper();
+        touTiaoLayoutHelper.setBgColor(0xfff0f0f0);
+        touTiaoLayoutHelper.setDividerHeight(UIUtils.dip2px(1));
         touTiaoAdapter = new HomeTouTiaoAdapter(mActivity, touTiaoList, touTiaoLayoutHelper);
         adapters.add(touTiaoAdapter);
+
         delegateAdapter.setAdapters(adapters);
 
     }

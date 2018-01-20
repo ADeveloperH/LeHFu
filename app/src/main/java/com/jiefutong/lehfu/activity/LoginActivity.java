@@ -130,6 +130,7 @@ public class LoginActivity extends BaseNotTitleActivity {
                         SimpleResultBean resultBean = JsonUtil.fromJson(content, SimpleResultBean.class);
                         if (resultBean.getStatus() == 1) {
                             SharedPreferencesUtil.setPhoneNumber(inputPhone);
+                            SharedPreferencesUtil.setAppToken(resultBean.getApp_token());
                             startActivity(new Intent(act, MainActivity.class));
                             finish();
                         }

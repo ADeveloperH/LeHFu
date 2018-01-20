@@ -49,6 +49,9 @@ public class Http {
     //找回密码接口
     public static final String FIND_PWD = "index.php/User/Index/forget.html";
 
+    //重置密码接口
+    public static final String RESET_PWD = "index.php/User/Account/resetpwd.html";
+
 
     static {
         BASE_URL = "http://cslhf.jiefutong.net/";//主机域名

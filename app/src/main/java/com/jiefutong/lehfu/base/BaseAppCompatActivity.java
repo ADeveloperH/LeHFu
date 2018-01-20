@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.jiefutong.lehfu.AppManager;
+import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
 import com.jiefutong.lehfu.utils.UIUtils;
 
 import java.lang.reflect.Field;
@@ -29,12 +30,15 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity{
     protected Activity act;
     private ProgressDialog loading;//正在加载的进度条
     protected boolean isFullScreen = false;//是否是全屏。默认不是全屏
+    protected String phoneNumber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         act = this;
         AppManager.getAppManager().addActivity(this);
+
+        phoneNumber = SharedPreferencesUtil.getPhoneNumber();
     }
 
     /**

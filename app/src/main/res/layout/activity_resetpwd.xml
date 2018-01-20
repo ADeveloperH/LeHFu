@@ -30,6 +30,7 @@
                 android:textSize="16dp" />
 
             <TextView
+                android:id="@+id/tv_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,18 +61,20 @@
                 android:textSize="16dp" />
 
             <EditText
+                android:id="@+id/et_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="输入右侧验证码"
-                android:inputType="phone"
-                android:maxLength="13"
+                android:inputType="text"
                 android:singleLine="true"
                 android:textColorHint="#A8A8A8"
                 android:textSize="15dp" />
 
             <ImageView
+                android:id="@+id/iv_code"
+                android:scaleType="fitXY"
                 android:layout_width="89dp"
                 android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
@@ -101,13 +104,13 @@
                 android:textSize="16dp" />
 
             <EditText
+                android:id="@+id/et_sms_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="输入收到的短信码"
-                android:inputType="phone"
-                android:maxLength="13"
+                android:inputType="text"
                 android:singleLine="true"
                 android:textColorHint="#A8A8A8"
                 android:textSize="14dp" />
@@ -120,6 +123,7 @@
                 android:background="#A6A6A6" />
 
             <TextView
+                android:id="@+id/tv_get_sms_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
@@ -154,13 +158,13 @@
                 android:textSize="16dp" />
 
             <EditText
+                android:id="@+id/et_pwd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="输入新密码"
-                android:inputType="phone"
-                android:maxLength="13"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:textColorHint="#A8A8A8"
                 android:textSize="14dp" />
@@ -190,14 +194,13 @@
                 android:textSize="16dp" />
 
             <EditText
+                android:id="@+id/et_pwd2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="请再次输入新密码"
-                android:inputType="phone"
-                android:maxLength="13"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:textColorHint="#A8A8A8"
                 android:textSize="14dp" />
@@ -206,6 +209,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_ok"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="43dp"

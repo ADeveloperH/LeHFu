@@ -13,6 +13,7 @@ public class LoginUtils {
 
     public static boolean isLoginState() {
         String phonNumber = SharedPreferencesUtil.getPhoneNumber();
-        return !(TextUtils.isEmpty(phonNumber));
+        String appToken = SharedPreferencesUtil.getAppToken();
+        return !(TextUtils.isEmpty(phonNumber)) && !(TextUtils.isEmpty(phonNumber));
     }
 }

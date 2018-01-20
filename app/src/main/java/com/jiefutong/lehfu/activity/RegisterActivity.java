@@ -173,7 +173,6 @@ public class RegisterActivity extends BaseTitleActivity {
                         ToastUtils.showCenterShortToast("注册失败");
                     }
                 });
-
     }
 
 

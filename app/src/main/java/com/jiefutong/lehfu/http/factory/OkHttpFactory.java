@@ -41,7 +41,7 @@ public enum  OkHttpFactory {
                 //失败重连
                 .retryOnConnectionFailure(true)
                 //设置拦截器。添加头和公共参数
-//                .addInterceptor(new MyInterceptor())
+                .addInterceptor(new MyInterceptor())
                 //https请求
                 .sslSocketFactory(getSSLSocketFactory(),new TrustAllManager())
                 .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)

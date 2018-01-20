@@ -24,8 +24,13 @@ public class Http {
 
     public static final String BASE_URL;
 
+
+    //密码登录
+    public static final String LOGIN_PWD = "index.php/User/Index/passlogin";
+
+
     static {
-        BASE_URL = "";//主机域名
+        BASE_URL = "http://cslhf.jiefutong.net/";//主机域名
     }
 
     /**

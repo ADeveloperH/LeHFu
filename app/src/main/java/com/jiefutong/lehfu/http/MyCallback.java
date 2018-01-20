@@ -1,11 +1,6 @@
 package com.jiefutong.lehfu.http;
 
 
-import com.jiefutong.lehfu.http.encrypt.RSAEncrypt;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
@@ -50,23 +45,23 @@ public abstract class MyCallback implements Callback<ResponseBody> {
      * @param responseStr 响应数据
      */
     private void decryptResult(String responseStr, String URL) {
-        try {
-            JSONObject jsonObject = new JSONObject(responseStr);
-            int keyLength = jsonObject.length();
-            if (keyLength == 1 && jsonObject.has("result")) {
-                //返回的是加密的数据
-                String result = jsonObject.optString("result");
-                String decodeStr = RSAEncrypt.decrypt(result);
-//                Log.w("OkHttp", "URL::" + URL + "---------decodeStr::" + decodeStr);
-                onSuccess(decodeStr);
-            } else {
-//                Log.w("OkHttp", "URL::" + URL + "---------response body donnot contain result");
-                onSuccess(responseStr);
-            }
-        } catch (JSONException e) {
-//            Log.w("OkHttp", "URL::" + URL + "---------JSONException::" + e.getMessage());
-            onFailure(e);
-        }
+//        try {
+//            JSONObject jsonObject = new JSONObject(responseStr);
+//            int keyLength = jsonObject.length();
+//            if (keyLength == 1 && jsonObject.has("result")) {
+//                //返回的是加密的数据
+//                String result = jsonObject.optString("result");
+//                String decodeStr = RSAEncrypt.decrypt(result);
+////                Log.w("OkHttp", "URL::" + URL + "---------decodeStr::" + decodeStr);
+//                onSuccess(decodeStr);
+//            } else {
+////                Log.w("OkHttp", "URL::" + URL + "---------response body donnot contain result");
+//                onSuccess(responseStr);
+//            }
+//        } catch (JSONException e) {
+////            Log.w("OkHttp", "URL::" + URL + "---------JSONException::" + e.getMessage());
+//            onFailure(e);
+//        }
     }
 
     @Override

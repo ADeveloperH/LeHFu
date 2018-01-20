@@ -1,7 +1,6 @@
 package com.jiefutong.lehfu.http;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 public class GetHttpsDataUtil {
 
@@ -21,40 +20,6 @@ public class GetHttpsDataUtil {
 	public GetHttpsDataUtil(Context context) {
 		super();
 		this.context = context;
-	}
-
-
-	/**
-	 *
-	 * 查询客户端详单的接口
-	 * @param phoneNumber 手机号
-	 * @param recordType 查询类型
-	 *  01套餐及固定费用详单 	02通话详单	 03短/彩信详单	 04上网详单
-	 *  05增值业务扣费记录 		06代收费业务扣费记录 		07其他费用扣费记录
-	 * @param billMonth 帐单月份，数据格式：YYYYMM，不能大于当前月份
-	 * @param searchValue  搜索字符串 非必填项
-	 * @param start 第几页
-	 * @param length 每页显示条数
-	 * @param isShowRemind 是否显示正在加载中
-	 * @param dialogMsg 正在加载的文字信息
-	 */
-	public void queryDetailRecord(String phoneNumber,String recordType,
-								  String billMonth,String searchValue,int start,int length,
-								  boolean isShowRemind,String dialogMsg,String moduleId){
-		RequestParams requestParamsMap = new RequestParams();
-		requestParamsMap.put("phoneNumber", phoneNumber);
-		requestParamsMap.put("recordType", recordType);
-		requestParamsMap.put("billMonth", billMonth);
-		requestParamsMap.put("moduleId", moduleId);
-		if(!TextUtils.isEmpty(searchValue)){
-			requestParamsMap.put("searchValue", searchValue);
-		}
-		requestParamsMap.put("start", start + "");
-		requestParamsMap.put("length", length + "");
-		if (!isShowRemind) {
-			dialogMsg = null;
-		}
-		getData(HttpsUtils.QUERY_DETAIL_RECORD, requestParamsMap,dialogMsg);
 	}
 
 	private void getData(final String url, RequestParams requestParamsMap,

@@ -19,6 +19,7 @@ import com.jiefutong.lehfu.http.MyTextAsyncResponseHandler;
 import com.jiefutong.lehfu.http.RequestParams;
 import com.jiefutong.lehfu.utils.DataCheckUtils;
 import com.jiefutong.lehfu.utils.JsonUtil;
+import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
 import com.jiefutong.lehfu.utils.ToastUtils;
 
 import java.util.UUID;
@@ -125,6 +126,7 @@ public class LoginActivity extends BaseNotTitleActivity {
                         super.onSuccess(content);
                         SimpleResultBean resultBean = JsonUtil.fromJson(content, SimpleResultBean.class);
                         if (resultBean.getStatus() == 1) {
+                            SharedPreferencesUtil.setPhoneNumber(inputPhone);
                             startActivity(new Intent(act, MainActivity.class));
                             finish();
                         }

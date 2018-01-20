@@ -15,6 +15,8 @@ public class SharedPreferencesUtil {
 
     public static final String KEY_APPTOKEN = "key_apptoken";
 
+    public static final String KEY_PHONENUMBER = "key_phonenumber";
+
 
     private static Context mcontext;
 
@@ -52,6 +54,20 @@ public class SharedPreferencesUtil {
             return getPreferencesPrivate().getString(KEY_APPTOKEN, "-1");
         }
         return "-1";
+    }
+
+    public static boolean setPhoneNumber(String phoneNumber) {
+        if (getPreferencesPrivate() != null) {
+            return getPreferencesPrivate().edit().putString(KEY_PHONENUMBER, phoneNumber).commit();
+        }
+        return false;
+    }
+
+    public static String getPhoneNumber() {
+        if (getPreferencesPrivate() != null) {
+            return getPreferencesPrivate().getString(KEY_PHONENUMBER, "");
+        }
+        return "";
     }
 
 //===========================================getPreferencesPrivate	END====================================//

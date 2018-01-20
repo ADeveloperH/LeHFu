@@ -8,6 +8,7 @@ import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.base.BaseNotTitleActivity;
 import com.jiefutong.lehfu.utils.AppUtil;
 import com.jiefutong.lehfu.utils.DateUtil;
+import com.jiefutong.lehfu.utils.LoginUtils;
 import com.jiefutong.lehfu.utils.SharedPreferencesUtil;
 
 /**
@@ -24,7 +25,11 @@ public class SplashActivity extends BaseNotTitleActivity {
 
         updateData();
 
-        startActivity(new Intent(this, RegisterActivity.class));
+        if (LoginUtils.isLoginState()) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            startActivity(new Intent(this, RegisterActivity.class));
+        }
         finish();
     }
 

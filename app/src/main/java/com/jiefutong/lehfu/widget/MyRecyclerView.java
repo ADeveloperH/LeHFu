@@ -2,8 +2,10 @@ package com.jiefutong.lehfu.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.jiefutong.lehfu.adapter.LoadMoreAdapter;
@@ -23,6 +25,7 @@ public class MyRecyclerView extends RecyclerView {
     //是否添加了加载更多的adapter
     private boolean hasLoadMoreAdapter = false;
     private LoadMoreAdapter loadMoreAdapter;
+    private ViewGroup refreshLayout;
 
     public MyRecyclerView(Context context) {
         this(context, null);
@@ -43,13 +46,22 @@ public class MyRecyclerView extends RecyclerView {
 
     public synchronized void setOnRefresh(boolean onRefresh) {
         this.onRefresh = onRefresh;
+        if (!onRefresh && refreshLayout != null) {
+            if (refreshLayout instanceof SwipeRefreshLayout) {
+                SwipeRefreshLayout swipeRefresh = (SwipeRefreshLayout) refreshLayout;
+                if (swipeRefresh != null && swipeRefresh.isRefreshing()) {
+                    swipeRefresh.setRefreshing(false);
+                }
+            }
+
+        }
     }
 
     public synchronized boolean isOnLoadMore() {
         return onLoadMore;
     }
 
-    public synchronized void showOnLoadMore(boolean onLoadMore) {
+    public synchronized void setOnLoadMore(boolean onLoadMore) {
         this.onLoadMore = onLoadMore;
         Adapter adapter = getAdapter();
         if (adapter instanceof DelegateAdapter) {
@@ -73,5 +85,13 @@ public class MyRecyclerView extends RecyclerView {
             }
 
         }
+    }
+
+    /**
+     * 设置下拉刷新的控件
+     * @param refreshLayout
+     */
+    public void setRefreshLayout(ViewGroup refreshLayout) {
+        this.refreshLayout = refreshLayout;
     }
 }

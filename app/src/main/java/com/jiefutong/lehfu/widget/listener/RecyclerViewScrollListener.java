@@ -25,11 +25,11 @@ public abstract class RecyclerViewScrollListener extends RecyclerView.OnScrollLi
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
         if (newState == RecyclerView.SCROLL_STATE_IDLE && !recyclerView.canScrollVertically(1)) {
-            //到底了
+            //到底了。可以执行加载更多了
             if (mRecyclerView != null) {
                 if (!mRecyclerView.isOnRefresh() && !mRecyclerView.isOnLoadMore()) {
                     //没有正在刷新。执行加载更多
-                    mRecyclerView.showOnLoadMore(true);
+                    mRecyclerView.setOnLoadMore(true);
                     loadMore();
                 }
             }

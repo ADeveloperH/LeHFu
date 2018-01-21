@@ -55,7 +55,6 @@ public class HomeFragment extends BaseFragment {
     private int curPage;
     private int pageCount = 10;
     private HomeTouTiaoAdapter touTiaoAdapter;
-    private DelegateAdapter delegateAdapter;
 
     @Nullable
     @Override
@@ -85,19 +84,19 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setListener() {
+        mRecyclerview.setRefreshLayout(swipeRefresh);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshListener(mRecyclerview) {
             @Override
             protected void refresh() {
-                Log.d("huang", "refresh: ");
                 curPage = 0;
                 getTouTiaoData();
             }
         });
+
         mRecyclerview.addOnScrollListener(new RecyclerViewScrollListener(mRecyclerview) {
 
             @Override
             protected void loadMore() {
-                Log.d("huang", "loadMore: ");
                 mRecyclerview.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -148,7 +147,6 @@ public class HomeFragment extends BaseFragment {
                                 if (curPage == 0) {
                                     touTiaoList.clear();
                                 }
-                                Log.d("huang", "onSuccess: " + touTiaoList.size());
                                 touTiaoList.addAll(resultList);
                                 touTiaoAdapter.setDataList(touTiaoList);
                                 touTiaoAdapter.notifyDataSetChanged();
@@ -175,7 +173,7 @@ public class HomeFragment extends BaseFragment {
         List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
         mRecyclerview.setLayoutManager(layoutManager);
-        delegateAdapter = new DelegateAdapter(layoutManager, false);
+        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
         mRecyclerview.setAdapter(delegateAdapter);
 
         adapters.add(new HomeTopAdapter(mActivity, new LinearLayoutHelper(), 1));
@@ -206,11 +204,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getDataFinish() {
-        if (swipeRefresh != null && swipeRefresh.isRefreshing()) {
-            swipeRefresh.setRefreshing(false);
-        }
         if (mRecyclerview != null) {
-            mRecyclerview.showOnLoadMore(false);
+            mRecyclerview.setOnLoadMore(false);
             mRecyclerview.setOnRefresh(false);
         }
     }

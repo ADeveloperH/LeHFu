@@ -3,7 +3,6 @@ package com.jiefutong.lehfu.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,13 +96,8 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             protected void loadMore() {
-                mRecyclerview.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        curPage++;
-                        getTouTiaoData();
-                    }
-                }, 2000);
+                curPage++;
+                getTouTiaoData();
             }
         });
     }
@@ -169,7 +163,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initRecyclerView() {
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         mRecyclerview.setItemAnimator(null);
+
         List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
         mRecyclerview.setLayoutManager(layoutManager);

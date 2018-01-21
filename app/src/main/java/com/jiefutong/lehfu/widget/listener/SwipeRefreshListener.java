@@ -24,7 +24,7 @@ public abstract class SwipeRefreshListener implements SwipeRefreshLayout.OnRefre
     @Override
     public void onRefresh() {
         if (mRecyclerView != null) {
-            if (!mRecyclerView.isOnLoadMore()) {
+            if (!mRecyclerView.isOnLoadMore() && !mRecyclerView.isOnRefresh()) {
                 //没有加载更多，执行刷新
                 mRecyclerView.setOnRefresh(true);
                 refresh();

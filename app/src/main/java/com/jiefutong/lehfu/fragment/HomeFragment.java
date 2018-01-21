@@ -18,7 +18,6 @@ import com.jiefutong.lehfu.adapter.HomeGridAdapter;
 import com.jiefutong.lehfu.adapter.HomeTitleAdapter;
 import com.jiefutong.lehfu.adapter.HomeTopAdapter;
 import com.jiefutong.lehfu.adapter.HomeTouTiaoAdapter;
-import com.jiefutong.lehfu.adapter.LoadMoreAdapter;
 import com.jiefutong.lehfu.base.BaseFragment;
 import com.jiefutong.lehfu.bean.HomeTouTiaoResultBean;
 import com.jiefutong.lehfu.http.Http;
@@ -56,9 +55,7 @@ public class HomeFragment extends BaseFragment {
     private int curPage;
     private int pageCount = 10;
     private HomeTouTiaoAdapter touTiaoAdapter;
-    private LoadMoreAdapter loadMoreAdapter;
     private DelegateAdapter delegateAdapter;
-    private boolean hasLoadMoreAdapter = false;
 
     @Nullable
     @Override
@@ -101,13 +98,6 @@ public class HomeFragment extends BaseFragment {
             @Override
             protected void loadMore() {
                 Log.d("huang", "loadMore: ");
-                if (!hasLoadMoreAdapter) {
-                    delegateAdapter.addAdapter(loadMoreAdapter);
-                    hasLoadMoreAdapter = true;
-                    delegateAdapter.notifyItemInserted(delegateAdapter.getItemCount() - 1);
-                    mRecyclerview.scrollToPosition(delegateAdapter.getItemCount() - 1);
-                }
-
                 mRecyclerview.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -158,6 +148,7 @@ public class HomeFragment extends BaseFragment {
                                 if (curPage == 0) {
                                     touTiaoList.clear();
                                 }
+                                Log.d("huang", "onSuccess: " + touTiaoList.size());
                                 touTiaoList.addAll(resultList);
                                 touTiaoAdapter.setDataList(touTiaoList);
                                 touTiaoAdapter.notifyDataSetChanged();
@@ -181,7 +172,6 @@ public class HomeFragment extends BaseFragment {
 
     private void initRecyclerView() {
         mRecyclerview.setItemAnimator(null);
-        loadMoreAdapter = new LoadMoreAdapter(mActivity);
         List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
         mRecyclerview.setLayoutManager(layoutManager);
@@ -220,12 +210,8 @@ public class HomeFragment extends BaseFragment {
             swipeRefresh.setRefreshing(false);
         }
         if (mRecyclerview != null) {
-            mRecyclerview.setOnLoadMore(false);
+            mRecyclerview.showOnLoadMore(false);
             mRecyclerview.setOnRefresh(false);
-        }
-        if (delegateAdapter != null && hasLoadMoreAdapter) {
-            delegateAdapter.removeLastAdapter();
-            hasLoadMoreAdapter = false;
         }
     }
 }

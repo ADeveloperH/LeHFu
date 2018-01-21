@@ -18,6 +18,7 @@ import com.jiefutong.lehfu.adapter.HomeGridAdapter;
 import com.jiefutong.lehfu.adapter.HomeTitleAdapter;
 import com.jiefutong.lehfu.adapter.HomeTopAdapter;
 import com.jiefutong.lehfu.adapter.HomeTouTiaoAdapter;
+import com.jiefutong.lehfu.adapter.LoadMoreAdapter;
 import com.jiefutong.lehfu.base.BaseFragment;
 import com.jiefutong.lehfu.bean.HomeTouTiaoResultBean;
 import com.jiefutong.lehfu.http.Http;
@@ -55,7 +56,9 @@ public class HomeFragment extends BaseFragment {
     private int curPage;
     private int pageCount = 10;
     private HomeTouTiaoAdapter touTiaoAdapter;
-    private List<DelegateAdapter.Adapter> adapters;
+    private LoadMoreAdapter loadMoreAdapter;
+    private DelegateAdapter delegateAdapter;
+    private boolean hasLoadMoreAdapter = false;
 
     @Nullable
     @Override
@@ -98,8 +101,20 @@ public class HomeFragment extends BaseFragment {
             @Override
             protected void loadMore() {
                 Log.d("huang", "loadMore: ");
-                curPage++;
-                getTouTiaoData();
+                if (!hasLoadMoreAdapter) {
+                    delegateAdapter.addAdapter(loadMoreAdapter);
+                    hasLoadMoreAdapter = true;
+                    delegateAdapter.notifyItemInserted(delegateAdapter.getItemCount() - 1);
+                    mRecyclerview.scrollToPosition(delegateAdapter.getItemCount() - 1);
+                }
+
+                mRecyclerview.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        curPage++;
+                        getTouTiaoData();
+                    }
+                }, 2000);
             }
         });
     }
@@ -113,7 +128,7 @@ public class HomeFragment extends BaseFragment {
         requestParams.put("page", curPage + "");
         requestParams.put("size", pageCount + "");
         Http.post(Http.GET_TOUTIAO, requestParams,
-                new MyTextAsyncResponseHandler(mActivity, "获取中...") {
+                new MyTextAsyncResponseHandler(mActivity, null) {
                     @Override
                     public void onSuccess(String content) {
                         super.onSuccess(content);
@@ -165,10 +180,12 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initRecyclerView() {
-        adapters = new LinkedList<>();
+        mRecyclerview.setItemAnimator(null);
+        loadMoreAdapter = new LoadMoreAdapter(mActivity);
+        List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
         mRecyclerview.setLayoutManager(layoutManager);
-        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
+        delegateAdapter = new DelegateAdapter(layoutManager, false);
         mRecyclerview.setAdapter(delegateAdapter);
 
         adapters.add(new HomeTopAdapter(mActivity, new LinearLayoutHelper(), 1));
@@ -205,6 +222,10 @@ public class HomeFragment extends BaseFragment {
         if (mRecyclerview != null) {
             mRecyclerview.setOnLoadMore(false);
             mRecyclerview.setOnRefresh(false);
+        }
+        if (delegateAdapter != null && hasLoadMoreAdapter) {
+            delegateAdapter.removeLastAdapter();
+            hasLoadMoreAdapter = false;
         }
     }
 }

@@ -11,8 +11,6 @@
  */
 package com.jiefutong.lehfu.utils;
 
-import android.util.Log;
-
 import com.jiefutong.lehfu.http.encrypt.Base64Utils;
 
 import java.io.BufferedReader;
@@ -157,7 +155,6 @@ public class RSAEncrypt {
            while (inputLen - offSet > 0) {
                boolean useBlockEncypt = false;
                if (inputLen - offSet > MAX_ENCRYPT_BLOCK) {
-                   Log.d("huang", "encrypt: inputLen - offSet > MAX_ENCRYPT_BLOCK");
                    useBlockEncypt = true;
                    cache = cipher.doFinal(plainTextData, offSet, MAX_ENCRYPT_BLOCK);
                } else {
@@ -172,11 +169,9 @@ public class RSAEncrypt {
            }
            byte[] encryptedData = out.toByteArray();
            out.close();
-           Log.d("huang", "encrypt: " + Base64Utils.encode(encryptedData));
            return Base64Utils.encode(encryptedData);
 //           return new String(encryptedData);
        } catch (Exception e) {
-           Log.d("huang", "encrypt: e" + e.getLocalizedMessage());
            return null;
        }
    }

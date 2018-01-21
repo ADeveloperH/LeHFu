@@ -2,7 +2,8 @@ package com.jiefutong.lehfu.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,9 @@ import com.jiefutong.lehfu.http.RequestParams;
 import com.jiefutong.lehfu.utils.JsonUtil;
 import com.jiefutong.lehfu.utils.ToastUtils;
 import com.jiefutong.lehfu.utils.UIUtils;
+import com.jiefutong.lehfu.widget.MyRecyclerView;
+import com.jiefutong.lehfu.widget.listener.RecyclerViewScrollListener;
+import com.jiefutong.lehfu.widget.listener.SwipeRefreshListener;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -43,12 +47,15 @@ import butterknife.ButterKnife;
 public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.recyclerview)
-    RecyclerView recyclerview;
+    MyRecyclerView mRecyclerview;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefresh;
     private View rootView;
     private List<HomeTouTiaoResultBean> touTiaoList = new ArrayList<>();
     private int curPage;
     private int pageCount = 10;
     private HomeTouTiaoAdapter touTiaoAdapter;
+    private List<DelegateAdapter.Adapter> adapters;
 
     @Nullable
     @Override
@@ -73,6 +80,28 @@ public class HomeFragment extends BaseFragment {
         initRecyclerView();
 
         getTouTiaoData();
+        setListener();
+
+    }
+
+    private void setListener() {
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshListener(mRecyclerview) {
+            @Override
+            protected void refresh() {
+                Log.d("huang", "refresh: ");
+                curPage = 0;
+                getTouTiaoData();
+            }
+        });
+        mRecyclerview.addOnScrollListener(new RecyclerViewScrollListener(mRecyclerview) {
+
+            @Override
+            protected void loadMore() {
+                Log.d("huang", "loadMore: ");
+                curPage++;
+                getTouTiaoData();
+            }
+        });
     }
 
 
@@ -111,18 +140,24 @@ public class HomeFragment extends BaseFragment {
                                     new TypeToken<List<HomeTouTiaoResultBean>>() {
                                     }.getType());
                             if (resultList != null && resultList.size() > 0) {
+                                if (curPage == 0) {
+                                    touTiaoList.clear();
+                                }
                                 touTiaoList.addAll(resultList);
                                 touTiaoAdapter.setDataList(touTiaoList);
                                 touTiaoAdapter.notifyDataSetChanged();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
+                        } finally {
+                            getDataFinish();
                         }
                     }
 
                     @Override
                     public void onFailure(Throwable error) {
                         super.onFailure(error);
+                        getDataFinish();
                         ToastUtils.showCenterLongToast("获取数据失败");
                     }
                 });
@@ -130,11 +165,11 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initRecyclerView() {
-        List<DelegateAdapter.Adapter> adapters = new LinkedList<>();
+        adapters = new LinkedList<>();
         VirtualLayoutManager layoutManager = new VirtualLayoutManager(mActivity);
-        recyclerview.setLayoutManager(layoutManager);
+        mRecyclerview.setLayoutManager(layoutManager);
         DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
-        recyclerview.setAdapter(delegateAdapter);
+        mRecyclerview.setAdapter(delegateAdapter);
 
         adapters.add(new HomeTopAdapter(mActivity, new LinearLayoutHelper(), 1));
 
@@ -163,9 +198,13 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        getTouTiaoData();
+    private void getDataFinish() {
+        if (swipeRefresh != null && swipeRefresh.isRefreshing()) {
+            swipeRefresh.setRefreshing(false);
+        }
+        if (mRecyclerview != null) {
+            mRecyclerview.setOnLoadMore(false);
+            mRecyclerview.setOnRefresh(false);
+        }
     }
 }

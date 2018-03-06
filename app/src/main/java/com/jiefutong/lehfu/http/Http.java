@@ -76,6 +76,9 @@ public class Http {
     //用户反馈
     public static final String FEEDBACK = "index.php/User/Feedback/index";
 
+    //检测是否设置交易密码
+    public static final String CHECK_HAS_TRANSPWD = "index.php/User/Extend/IsHavePassword";
+
 
 
 

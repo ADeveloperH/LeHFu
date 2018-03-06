@@ -7,7 +7,13 @@ import android.view.View;
 
 import com.jiefutong.lehfu.R;
 import com.jiefutong.lehfu.base.BaseTitleActivity;
+import com.jiefutong.lehfu.bean.SimpleResultBean;
+import com.jiefutong.lehfu.http.Http;
+import com.jiefutong.lehfu.http.MyTextAsyncResponseHandler;
+import com.jiefutong.lehfu.http.RequestParams;
 import com.jiefutong.lehfu.utils.DialogUtil;
+import com.jiefutong.lehfu.utils.JsonUtil;
+import com.jiefutong.lehfu.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,9 +41,33 @@ public class TiXianByBalanceActivity extends BaseTitleActivity {
                 startActivity(new Intent(act, SelectBankCardActivity.class));
                 break;
             case R.id.btn_ti_xian:
-                showRemindDialog();
+                checkHasPwd();
                 break;
         }
+    }
+
+    /**
+     * 判断是否设置交易密码
+     */
+    private void checkHasPwd() {
+        RequestParams requestParams = new RequestParams();
+        Http.post(Http.CHECK_HAS_TRANSPWD, requestParams,
+                new MyTextAsyncResponseHandler(act, "请求中...") {
+                    @Override
+                    public void onSuccess(String content) {
+                        super.onSuccess(content);
+                        SimpleResultBean resultBean = JsonUtil.fromJson(content, SimpleResultBean.class);
+                        if (resultBean.getStatus() == 0) {
+                            showRemindDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable error) {
+                        super.onFailure(error);
+                        ToastUtils.showCenterShortToast("请求失败");
+                    }
+                });
     }
 
     private void showRemindDialog() {

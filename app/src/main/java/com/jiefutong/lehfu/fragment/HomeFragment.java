@@ -115,24 +115,24 @@ public class HomeFragment extends BaseFragment {
                     @Override
                     public void onSuccess(String content) {
                         super.onSuccess(content);
-                        content = "[\n" +
-                                "  {\n" +
-                                "    \"id\": \"28\", \n" +
-                                "    \"title\": \"如何才能真正的提高自己，成为一名出色的架构师？\", \n" +
-                                "    \"create_time\": \"2018-01-20 11:43:23\", \n" +
-                                "    \"cishu\": \"222\", \n" +
-                                "    \"pic\": \"/Uploads/2018-01-20/1516419810.png\", \n" +
-                                "    \"url\": \"\"\n" +
-                                "  }, \n" +
-                                "  {\n" +
-                                "    \"id\": \"27\", \n" +
-                                "    \"title\": \"范德萨范德萨\", \n" +
-                                "    \"create_time\": \"2018-01-20 11:42:50\", \n" +
-                                "    \"cishu\": \"22\", \n" +
-                                "    \"pic\": \"/Uploads/2018-01-20/1516419783.png\", \n" +
-                                "    \"url\": \"http://www.baidu.com\"\n" +
-                                "  }\n" +
-                                "]";
+//                        content = "[\n" +
+//                                "  {\n" +
+//                                "    \"id\": \"28\", \n" +
+//                                "    \"title\": \"如何才能真正的提高自己，成为一名出色的架构师？\", \n" +
+//                                "    \"create_time\": \"2018-01-20 11:43:23\", \n" +
+//                                "    \"cishu\": \"222\", \n" +
+//                                "    \"pic\": \"/Uploads/2018-01-20/1516419810.png\", \n" +
+//                                "    \"url\": \"\"\n" +
+//                                "  }, \n" +
+//                                "  {\n" +
+//                                "    \"id\": \"27\", \n" +
+//                                "    \"title\": \"范德萨范德萨\", \n" +
+//                                "    \"create_time\": \"2018-01-20 11:42:50\", \n" +
+//                                "    \"cishu\": \"22\", \n" +
+//                                "    \"pic\": \"/Uploads/2018-01-20/1516419783.png\", \n" +
+//                                "    \"url\": \"http://www.baidu.com\"\n" +
+//                                "  }\n" +
+//                                "]";
                         try {
                             List<HomeTouTiaoResultBean> resultList = JsonUtil.fromJson(content,
                                     new TypeToken<List<HomeTouTiaoResultBean>>() {

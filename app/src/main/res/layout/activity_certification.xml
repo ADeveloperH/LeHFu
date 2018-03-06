@@ -45,13 +45,12 @@
                     android:textSize="15dp" />
 
                 <EditText
+                    android:id="@+id/et_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入真实姓名"
-                    android:inputType="phone"
-                    android:maxLength="13"
                     android:singleLine="true"
                     android:textColorHint="#B6B6B6"
                     android:textSize="15dp" />
@@ -81,13 +80,13 @@
                     android:textSize="15dp" />
 
                 <EditText
+                    android:id="@+id/et_ID"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入身份证号码"
-                    android:inputType="phone"
-                    android:maxLength="13"
+                    android:inputType="number"
                     android:singleLine="true"
                     android:textColorHint="#B6B6B6"
                     android:textSize="15dp" />
@@ -123,6 +122,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/rl_ID_facade"
                     android:layout_width="99dp"
                     android:layout_height="99dp"
                     android:background="@drawable/bg_customer__gray_outerframe">
@@ -134,8 +134,18 @@
                         android:src="@drawable/customer_plus" />
 
                     <ImageView
+                        android:id="@+id/iv_id_facade"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_id_facade_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/customer_bingo"
+                        android:visibility="gone"/>
                 </RelativeLayout>
 
                 <TextView
@@ -157,6 +167,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/rl_ID_identity"
                     android:layout_width="99dp"
                     android:layout_height="99dp"
                     android:background="@drawable/bg_customer__gray_outerframe">
@@ -168,8 +179,18 @@
                         android:src="@drawable/customer_plus" />
 
                     <ImageView
+                        android:id="@+id/iv_id_identity"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_id_identity_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/customer_bingo"
+                        android:visibility="gone"/>
                 </RelativeLayout>
 
                 <TextView
@@ -191,6 +212,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/rl_ID_hand"
                     android:layout_width="99dp"
                     android:layout_height="99dp"
                     android:background="@drawable/bg_customer__gray">
@@ -199,11 +221,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/customer_bingo" />
+                        android:src="@drawable/customer_plus" />
 
                     <ImageView
+                        android:id="@+id/iv_id_hand"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_id_hand_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/customer_bingo"
+                        android:visibility="gone"/>
                 </RelativeLayout>
 
                 <TextView
@@ -221,6 +253,7 @@
 
 
         <Button
+            android:id="@+id/btn_next"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="43dp"

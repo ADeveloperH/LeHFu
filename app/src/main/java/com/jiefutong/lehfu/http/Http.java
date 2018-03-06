@@ -1,13 +1,19 @@
 package com.jiefutong.lehfu.http;
 
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
+import com.jiefutong.lehfu.http.encrypt.Base64Utils;
 import com.jiefutong.lehfu.http.factory.ApiRequestFactory;
 import com.jiefutong.lehfu.utils.NetWorkUtil;
 import com.jiefutong.lehfu.utils.ToastUtils;
 
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -54,6 +60,14 @@ public class Http {
 
     //获取金融头条数据
     public static final String GET_TOUTIAO = "index.php/User/SyIndex/topJson.html";
+
+    //上传图片接口
+    public static final String UPLOAD_IMAGE = "index.php/User/Upload/index";
+
+    //实名认证接口
+    public static final String CERTIFY_REALNAME = "index.php/User/User/ToRealName";
+
+
 
 
     static {
@@ -278,11 +292,81 @@ public class Http {
             //带参数
             File file = new File(filePath);
             RequestBody photoRequestBody = RequestBody.create(MediaType.parse("image/*"), file);
-            MultipartBody.Part photo = MultipartBody.Part.createFormData("photos", file.getName(),
+            MultipartBody.Part photo = MultipartBody.Part.createFormData("imgFile", file.getName(),
                     photoRequestBody);
             ApiRequestFactory.INSTANCE.getiUploadFileRequest()
                     .uploadFile(url, photo, params).enqueue(responseHandler);
         }
+    }
+
+
+    /**
+     * 上传文件。body中进行base64编码
+     * @param url
+     * @param filePath
+     * @param params
+     * @param responseHandler
+     */
+    public static void uploadFileByBase64(final String url,final String filePath,
+                                        final RequestParams params, final Callback<ResponseBody> responseHandler) {
+        if (!NetWorkUtil.hasAvailableNetWork()) {
+            ToastUtils.showCenterLongToast("当前无网络，请检查网络设置或稍后再试");
+            return;
+        }
+        if (TextUtils.isEmpty(url) || TextUtils.isEmpty(filePath)) {
+            Log.e("Http", "请求地址和文件路径不能为空");
+        } else {
+            try {
+                String encodeBase64File = encodeBase64File(filePath);
+                JSONObject result = new JSONObject();
+                result.put("imgFile", encodeBase64File);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
+                        result.toString());
+                ApiRequestFactory.INSTANCE.getiPostRequest()
+                        .getDataByPostJson(url, requestBody).enqueue(responseHandler);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    /**
+     * 图片文件转Base64字符串
+     * @param path 文件所在的绝对路径加文件名　
+     * @return
+     */
+    public static String fileBase64String(String path){
+        try {
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);//转换成输入流
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int count = 0;
+            while((count = fis.read(buffer)) >= 0){
+                baos.write(buffer, 0, count);//读取输入流并写入输出字节流中
+            }
+            fis.close();//关闭文件输入流
+            String uploadBuffer = new String(Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT));  //进行Base64编码
+            return uploadBuffer;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    /**
+     * encodeBase64File:(将文件转成base64 字符串).
+     * @param path 文件路径
+     * @return
+     * @throws Exception
+     */
+    public static String encodeBase64File(String path) throws Exception {
+        File  file = new File(path);
+        FileInputStream inputFile = new FileInputStream(file);
+        byte[] buffer = new byte[(int)file.length()];
+        inputFile.read(buffer);
+        inputFile.close();
+        return Base64Utils.encode(buffer);
     }
 
     /**

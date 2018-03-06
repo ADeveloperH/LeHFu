@@ -73,6 +73,9 @@ public class Http {
     //退出登录
     public static final String LOGOUT = "index.php/User/Index/logout";
 
+    //用户反馈
+    public static final String FEEDBACK = "index.php/User/Feedback/index";
+
 
 
 

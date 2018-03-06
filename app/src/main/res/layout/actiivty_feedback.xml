@@ -16,6 +16,7 @@
         android:textSize="15dp" />
 
     <EditText
+        android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="105dp"
         android:background="#fff"
@@ -26,60 +27,61 @@
         android:textColorHint="#9E9E9E"
         android:textSize="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="17dp"
-        android:text="图片上传（选填，提供问题截图）"
-        android:textColor="#50566A"
-        android:textSize="15dp" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="7dp"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--android:layout_marginTop="17dp"-->
+        <!--android:text="图片上传（选填，提供问题截图）"-->
+        <!--android:textColor="#50566A"-->
+        <!--android:textSize="15dp" />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="10dp">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#fff"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingLeft="14dp"-->
+        <!--android:paddingTop="10dp">-->
 
-        <RelativeLayout
-            android:layout_width="83dp"
-            android:layout_height="83dp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="83dp"-->
+            <!--android:layout_height="83dp">-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/feedback_addphoto" />
-        </RelativeLayout>
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:src="@drawable/feedback_addphoto" />-->
+        <!--</RelativeLayout>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="17dp"
-        android:text="联系电话"
-        android:textColor="#50566A"
-        android:textSize="15dp" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="7dp"-->
+        <!--android:layout_marginLeft="14dp"-->
+        <!--android:layout_marginTop="17dp"-->
+        <!--android:text="联系电话"-->
+        <!--android:textColor="#50566A"-->
+        <!--android:textSize="15dp" />-->
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:gravity="top"
-        android:hint="选填，便于与您联系"
-        android:paddingBottom="15dp"
-        android:paddingLeft="14dp"
-        android:paddingTop="15dp"
-        android:textColorHint="#9E9E9E"
-        android:textSize="16dp" />
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#fff"-->
+        <!--android:gravity="top"-->
+        <!--android:hint="选填，便于与您联系"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="14dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:textColorHint="#9E9E9E"-->
+        <!--android:textSize="16dp" />-->
 
     <Button
+        android:id="@+id/btn_submit"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="43dp"

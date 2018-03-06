@@ -58,6 +58,9 @@ public class Http {
     //重置密码接口
     public static final String RESET_PWD = "index.php/User/Account/resetpwd.html";
 
+    //重置交易密码
+    public static final String RESET_TRANSACTIONPWD = "index.php/User/Account/TradeModify";
+
     //获取金融头条数据
     public static final String GET_TOUTIAO = "index.php/User/SyIndex/topJson.html";
 
@@ -66,6 +69,9 @@ public class Http {
 
     //实名认证接口
     public static final String CERTIFY_REALNAME = "index.php/User/User/ToRealName";
+
+    //退出登录
+    public static final String LOGOUT = "index.php/User/Index/logout";
 
 
 

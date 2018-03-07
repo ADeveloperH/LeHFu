@@ -79,6 +79,9 @@ public class Http {
     //检测是否设置交易密码
     public static final String CHECK_HAS_TRANSPWD = "index.php/User/Extend/IsHavePassword";
 
+    //获取团队列表接口
+    public static final String GET_TEAM_LIST = "index.php/User/Team/index";
+
 
 
 

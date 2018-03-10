@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jiefutong.lehfu.widget.swipemenu.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="97dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:paddingTop="10dp"
+    app:ios="true"
+    app:leftSwipe="true"
+    app:swipeEnable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:background="@drawable/bg_card_red"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle_white">
+
+            <TextView
+                android:id="@+id/tv_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="工"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="17dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="工商银行"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="储蓄卡"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="**** **** **** 6539"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:background="#EA354F"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+</com.jiefutong.lehfu.widget.swipemenu.SwipeMenuLayout>

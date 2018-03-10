@@ -82,6 +82,9 @@ public class Http {
     //获取团队列表接口
     public static final String GET_TEAM_LIST = "index.php/User/Team/index";
 
+    //获取卡包列表接口
+    public static final String GET_CARD_LIST = "index.php/User/CardAdd/index";
+
 
 
 
